@@ -70,20 +70,21 @@ public class MenuGenerator {
         char choice;
         boolean exit = false;
 
-        System.out.println("Desea empezar unha nova partida(s/n)? ");
-        choice = scanner.nextLine().charAt(0);
-
         do {
+            System.out.println("Desea empezar unha nova partida(s/n)? ");
+            choice = scanner.nextLine().charAt(0);
+
+
             if (choice == 's' || choice == 'S') {
                 exit = false;
             } else if (choice == 'n' || choice == 'N') {
                 System.out.println("Ata a proxima.");
                 exit = true;
             } else {
-                System.out.println("Instruccion incorrecta. Desea empezar unha nova partida(s/n)? ");
-                choice = scanner.nextLine().charAt(0);
+                System.out.println("Instruccion incorrecta.");
             }
-        } while (choice != 's' || choice != 'S' || choice != 'n' || choice != 'N');
+        } while (choice != 's' && choice != 'S' && choice != 'n' && choice != 'N');
+
 
         return exit;
     }
