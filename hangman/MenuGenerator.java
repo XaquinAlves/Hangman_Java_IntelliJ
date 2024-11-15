@@ -45,7 +45,7 @@ public class MenuGenerator {
 
             System.out.print("Introduce unha letra a adivinar: ");
             guess = scanner.nextLine().charAt(0);
-            System.out.println("");
+            System.out.println();
 
             hangMan.tryChar(guess);
         }
@@ -68,7 +68,7 @@ public class MenuGenerator {
     private boolean showExitMenu() {
         Scanner scanner = new Scanner(System.in);
         char choice;
-        boolean exit = false;
+        boolean exit = true;
 
         do {
             System.out.println("Desea empezar unha nova partida(s/n)? ");
