@@ -1,5 +1,7 @@
 package hangman;
 
+import java.util.Scanner;
+
 /**
  * Esta e a clase MenuGenerator, que se encarga dos menus da aplicacion
  *
@@ -25,6 +27,7 @@ public class MenuGenerator {
      */
     private String showInitMenu() {
         WordGenerator wordGenerator = new WordGenerator();
+        System.out.println("O xogo do aforcado");
         return wordGenerator.generateWord();
     }
 
@@ -33,13 +36,55 @@ public class MenuGenerator {
      * fallos e acertos na palabra
      */
     private void showGameMenu() {
-        System.out.println("Palabra a adivinar: " + hangMan.getHiddenWord().show());
-        System.out.println("Letras falladas: " + hangMan.getStringFails());
+        Scanner scanner = new Scanner(System.in);
+        char guess;
 
-        System.out.println("Introduce unha letra a adivinar: ");
+        while (!hangMan.isGameOver()) {
+            System.out.println("Palabra a adivinar: " + hangMan.getHiddenWord().show());
+            System.out.println("Letras falladas: " + hangMan.getStringFails());
+
+            System.out.print("Introduce unha letra a adivinar: ");
+            guess = scanner.nextLine().charAt(0);
+            System.out.println("");
+
+            hangMan.tryChar(guess);
+        }
+
+        System.out.print("Fin da partida. ");
+        if (hangMan.getHiddenWord().isVisible()) {
+            System.out.println("Gañaches.");
+        } else {
+            System.out.println("Perdiches. ");
+        }
+        System.out.println("A palabra era: " + hangMan.getHiddenWord().showFullWord());
     }
 
+    /**
+     * Pregunta ao usuario se quere xogar unha nova partida ou sair, Devolve true se o usuario quere salir
+     * e false en caso contrario
+     *
+     * @return se o usuario quere salir
+     */
     private boolean showExitMenu() {
+        Scanner scanner = new Scanner(System.in);
+        char choice;
+        boolean exit = false;
 
+        System.out.println("Desea empezar unha nova partida(s/n)? ");
+        choice = scanner.nextLine().charAt(0);
+
+        do {
+            if (choice == 's' || choice == 'S') {
+                exit = false;
+            } else if (choice == 'n' || choice == 'N') {
+                System.out.println("Ata a proxima.");
+                exit = true;
+            } else {
+                System.out.println("Instruccion incorrecta. Desea empezar unha nova partida(s/n)? ");
+                choice = scanner.nextLine().charAt(0);
+            }
+        } while (choice != 's' || choice != 'S' || choice != 'n' || choice != 'N');
+
+        return exit;
     }
 }
