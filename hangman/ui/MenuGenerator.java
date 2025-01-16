@@ -105,7 +105,6 @@ public class MenuGenerator {
                 exit = false;
             } else if (choice == 'n' || choice == 'N') {
                 System.out.println("Ata a proxima.");
-                exit = true;
             } else {
                 System.out.println("Instruccion incorrecta.");
             }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class HangMan {
     //Numero de intentos permitidos
-    private final int MAX_FAILS = 6;
+    public final int MAX_FAILS = 6;
     //Palabra a adiviñar
     private HiddenWord hiddenWord;
     //Caracteres fallados
@@ -22,14 +22,6 @@ public class HangMan {
     public HangMan(String word) {
         hiddenWord = new HiddenWord(word);
         fails = new ArrayList<>();
-    }
-
-    /**
-     *
-     * @return o numero maximo de intentos
-     */
-    public int getMAX_FAILS() {
-        return MAX_FAILS;
     }
 
     /**

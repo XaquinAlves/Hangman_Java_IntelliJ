@@ -16,18 +16,6 @@ public class ArrayWordGenerator implements WordGenerator {
     };
 
     /**
-     * Xera unha instancia de WordGenerator que conten 50 palabras en galego
-     */
-    public ArrayWordGenerator() {
-    }
-
-    /**
-     * @return o ArrayList coas palabras gardadas
-     */
-    public String[] getWORDLIST() {
-        return WORDLIST;
-    }
-    /**
      * Devolve o String coa palabra xerada a partir da lista
      * @return palabra xerada
      * @throws GenerateWordException se non se atopa a palabra
@@ -37,5 +25,4 @@ public class ArrayWordGenerator implements WordGenerator {
         int word = new java.util.Random().nextInt(50);
         return WORDLIST[word];
     }
-
 }
