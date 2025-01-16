@@ -17,8 +17,14 @@ public class MenuGenerator {
         MenuGenerator menuGenerator = new MenuGenerator();
 
         do {
-            menuGenerator.hangMan = new HangMan(menuGenerator.showInitMenu());
-            menuGenerator.showGameMenu();
+            try {
+                menuGenerator.hangMan = new HangMan(menuGenerator.showInitMenu());
+                menuGenerator.showGameMenu();
+            } catch (GenerateWordException e) {
+                if(e.isVisible()){
+                    System.out.println("Non se pudo atopar unha palabra");
+                }
+            }
         } while (!menuGenerator.showExitMenu());
     }
 
@@ -27,9 +33,28 @@ public class MenuGenerator {
      *
      * @return palabra a adiviñar;
      */
-    private String showInitMenu() {
-        System.out.println("O xogo do aforcado");
+    private String showInitMenu() throws GenerateWordException {
+        Scanner scanner = new Scanner(System.in);
+        WordGenerator wordGenerator = null;
+        int choice;
 
+        System.out.println("O xogo do aforcado\n" + "Escolla un modo de xogo:");
+        do {
+            System.out.println("1.Palabra da lista\n" + "2.Palabra introducida");
+
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            if (choice == 1) {
+                wordGenerator = new ArrayWordGenerator();
+            } else if (choice == 2) {
+                wordGenerator = new KeyboardWordGenerator();
+            } else {
+                System.out.println("Opcion incorrecta. Introduza unha opcion valida:");
+            }
+        } while (choice != 1 && choice != 2);
+
+        return wordGenerator.generateWord();
     }
 
     /**
