@@ -1,4 +1,4 @@
-package hangman;
+package hangman.model;
 
 import java.util.Arrays;
 
@@ -65,16 +65,14 @@ public class HiddenWord {
      * @return se a letra esta na palabra
      */
     public boolean checkChar(char c) {
-        boolean isCharacter = false;
-
         for (int i = 0; i < characters.length; i++) {
             if (characters[i] == c) {
                 hits[i] = true;
-                isCharacter = true;
+               return true;
             }
         }
 
-        return isCharacter;
+        return false;
     }
 
     /**

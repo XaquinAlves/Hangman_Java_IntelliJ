@@ -1,4 +1,6 @@
-package hangman;
+package hangman.ui;
+
+import hangman.model.HangMan;
 
 import java.util.Scanner;
 
@@ -26,9 +28,8 @@ public class MenuGenerator {
      * @return palabra a adiviñar;
      */
     private String showInitMenu() {
-        WordGenerator wordGenerator = new WordGenerator();
         System.out.println("O xogo do aforcado");
-        return wordGenerator.generateWord();
+
     }
 
     /**
