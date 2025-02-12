@@ -65,14 +65,15 @@ public class HiddenWord {
      * @return se a letra esta na palabra
      */
     public boolean checkChar(char c) {
+        boolean hit = false;
         for (int i = 0; i < characters.length; i++) {
             if (characters[i] == c) {
                 hits[i] = true;
-               return true;
+               hit = true;
             }
         }
 
-        return false;
+        return hit;
     }
 
     /**

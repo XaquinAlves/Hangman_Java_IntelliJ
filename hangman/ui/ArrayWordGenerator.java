@@ -22,7 +22,7 @@ public class ArrayWordGenerator implements WordGenerator {
      */
     @Override
     public String generateWord() throws GenerateWordException {
-        int word = new java.util.Random().nextInt(50);
+        int word = new java.util.Random().nextInt(WORDLIST.length);
         return WORDLIST[word];
     }
 }
